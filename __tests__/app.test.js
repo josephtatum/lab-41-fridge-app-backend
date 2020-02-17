@@ -58,4 +58,17 @@ describe('App Routes', () => {
       });
   });
 
+  it('can GET an item by ID from the database', () => {
+    return request(app)
+      .get(`/api/v1/items/${item.id}`)
+      .then(res => {
+        expect(res.body).toEqual({
+          __v: 0,
+          _id: expect.any(String),
+          name: 'Milk',
+          expirationDate: expect.any(String)
+        });
+      });
+  });
+
 });
