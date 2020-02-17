@@ -29,12 +29,14 @@ describe('App Routes', () => {
 
   it('can POST an item to the database', async() => {
 
+    const arrayOfItems = [{
+      name: 'Milk',
+      expirationDate: Date.now()
+    }];
+
     return request(app)
       .post('/api/v1/items')
-      .send({
-        name: 'Milk',
-        expirationDate: Date.now()
-      })
+      .send(arrayOfItems)
       .then(res => {
         expect(res.body).toEqual({
           __v: 0,
