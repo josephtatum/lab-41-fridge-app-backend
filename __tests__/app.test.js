@@ -85,4 +85,17 @@ describe('App Routes', () => {
       });
   });
 
+  it('can DELETE an item by ID in the database', () => {
+    return request(app)
+      .delete(`/api/v1/items/${item.id}`)
+      .then(res => {
+        expect(res.body).toEqual({
+          __v: 0,
+          _id: expect.any(String),
+          name: 'Milk',
+          expirationDate: expect.any(String)
+        });
+      });
+  });
+
 });
