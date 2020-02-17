@@ -36,7 +36,7 @@ describe('App Routes', () => {
 
     return request(app)
       .post('/api/v1/items')
-      .send(arrayOfItems)
+      .send(JSON.stringify(arrayOfItems))
       .then(res => {
         expect(res.body).toEqual({
           __v: 0,
