@@ -71,4 +71,18 @@ describe('App Routes', () => {
       });
   });
 
+  it('can PATCH (UPDATE) an item by ID in the database', () => {
+    return request(app)
+      .patch(`/api/v1/items/${item.id}`)
+      .send({ name: 'Eggs' })
+      .then(res => {
+        expect(res.body).toEqual({
+          __v: 0,
+          _id: expect.any(String),
+          name: 'Eggs',
+          expirationDate: expect.any(String)
+        });
+      });
+  });
+
 });
